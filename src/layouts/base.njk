@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+  <head>
+    <title>{% if title %}{{ title }} | {% endif %}{{ bio.name }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1.0, width=device-width">
+    <link rel="stylesheet" href="/media/css/core.css">
+    <!--[if gte IE 8]><!-->
+    {# <link rel="stylesheet" href="/media/css/screen.css" media="screen"> #}
+    <!--<![endif]-->
+    <meta http-equiv="x-ua-compatible" content="IE=edge">
+  </head>
+  {{ content | safe }}
+</html>

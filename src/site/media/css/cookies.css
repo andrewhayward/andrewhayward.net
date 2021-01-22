@@ -1,0 +1,78 @@
+/*
+  <div id="cookie-notice">
+    <p class="message">This site does not set cookies, except to remember that you have dismissed this message. Which you probably won't read anyway, because why would you?</p>
+    <p class="buttons">
+      <button type="button" class="reject">Reject</button>
+      <button type="button" class="accept">Accept</button>
+    </p>
+  </div>
+*/
+
+#cookie-notice {
+  position: fixed;
+  z-index: 10;
+  bottom: 1em;
+  left: 50%;
+  width: 30em;
+  margin-left: -15em;
+  background: #FFF;
+  padding: 0.75em 1em;
+  box-shadow: 0 0.1em 0.25em rgba(0,0,0,0.5);
+  border-radius: 0.25em;
+}
+
+#cookie-notice .message {
+  margin: 0;
+  font-size: 0.7em;
+  line-height: 1.25em;
+}
+
+#cookie-notice .buttons {
+  margin: 0.5em 0 0;
+  font-size: 0.9em;
+  text-align: center;
+}
+
+#cookie-notice button {
+  font: inherit;
+  font-size: 0.8em;
+  -webkit-box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2);
+  -moz-box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2);
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2);
+  -webkit-transition: -webkit-box-shadow 0.25s linear 0s;
+  -moz-transition: -moz-box-shadow 0.25s linear 0s;
+  transition: box-shadow 0.25s linear 0s;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#dddddd), to(#bbbbbb));
+  background-image: -webkit-linear-gradient(#DDD, #BBB);
+  background-image: -moz-linear-gradient(#DDD, #BBB);
+  background-image: -ms-linear-gradient(#DDD, #BBB);
+  background-image: -o-linear-gradient(#DDD, #BBB);
+  background-image: linear-gradient(#DDD, #BBB);
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -ms-border-radius: 0.25em;
+  -o-border-radius: 0.25em;
+  border-radius: 0.25em;
+  background-color: #999;
+  background-repeat: repeat-x;
+  border: 0 none;
+  color: #333;
+  display: inline-block;
+  height: 2.5em;
+  line-height: 2.5em;
+  padding: 0 1.5em;
+  margin: 0;
+  text-align: center;
+  -webkit-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  -moz-text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+#cookie-notice button:hover,
+#cookie-notice button:focus {
+  -webkit-box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2), inset 0 12px 24px 2px #DDD;
+  -moz-box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2), inset 0 12px 24px 2px #DDD;
+  box-shadow: 0 2px 0 0 rgba(0,0,0,0.1), inset 0 -2px 0 0 rgba(0,0,0,0.2), inset 0 12px 24px 2px #DDD;
+}

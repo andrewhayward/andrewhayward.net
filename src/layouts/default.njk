@@ -1,0 +1,36 @@
+---
+layout: base
+---
+<body class="page">
+  <header id="header">
+    <div class="constrained">
+      <div id="title" class="vcard no-auth">
+        <h1><a href="/" class="url fn">{{ bio.name }}</a></h1>
+        <p><span class="role">{{ bio.work.title }}</span> at <a href="{{ bio.work.employer_url }}" tabindex="-1" class="org">{{ bio.work.employer }}</a></p>
+      </div>
+    </div>
+  </header>
+  <div id="content">
+    <article>
+      <div class="primary">
+        <div class="constrained">
+          <div class="meta">
+            <header>
+              <h1>{% if header %}{{ header }}{% else %}{{ title }}{% endif %}</h1>
+            </header>
+          </div>
+          <div class="content">
+            {{ content | safe }}
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+  <div id="extraneous">
+    <footer id="footer" role="contentinfo">
+      <div class="constrained">
+        <div><small>Except where otherwise stated, content copyright and licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_GB">Creative Commons Attribution 3.0 Unported License</a>.</small></div>
+      </div>
+    </footer>
+  </div>
+</body>
