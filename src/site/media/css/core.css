@@ -51,6 +51,35 @@ body {
   }
 }
 
+#skip-links {
+  position: fixed;
+  top: 1em;
+  left: 0;
+  right: 0;
+  z-index: 10;
+}
+
+#skip-links a {
+  position: absolute;
+  left: -50em;
+  top: -50em;
+  display: block;
+  background: #222;
+  color: #EEE;
+  font-weight: normal;
+  padding: 0.5em 1em;
+  margin: 0 1em;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  box-shadow: 0 0 0.5em rgba(0,0,0,0.5), inset 0 0 0 2px #EEE;
+  border-radius: 0.25em;
+}
+
+#skip-links a:focus {
+  position: static;
+}
+
 #splash {
   background: #222;
 }
@@ -73,15 +102,15 @@ body {
   text-align: center;
 }
 
-@media (min-width: 50em) and (min-height: 25em) {
+@media (min-width: 45em) and (min-height: 25em) {
   body.home::before {
     content: "";
-    height: min(95vh, 35em);
+    height: min(95vh, 20em);
     display: block;
   }
 
   #splash {
-    height: min(95vh, 35em);
+    height: min(95vh, 20em);
     position: fixed;
     top: 0;
     left: 0;
@@ -105,6 +134,20 @@ body {
   #splash h1 {
     font-size: 4em;
     margin: 0.25em 40% 0 0;
+  }
+}
+
+@media (min-width: 65em) and (min-height: 25em) {
+  body.home::before {
+    height: min(95vh, 35em);
+  }
+
+  #splash {
+    height: min(95vh, 35em);
+  }
+
+  #splash::before {
+    background-image: url(./images/home-background-large.jpg);
   }
 }
 
@@ -137,6 +180,12 @@ body {
 #header a {
   color: #EEE;
   text-decoration: none;
+  border-radius: 0.25em;
+}
+
+#header a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #EEE;
 }
 
 #header .constrained {
@@ -164,7 +213,33 @@ body.home #header .title.active {
   justify-content: flex-end;
   margin: 0;
   padding: 0;
-  column-gap: 1em;
+  column-gap: 0.75em;
+}
+
+#navigation a {
+  color: #CCC;
+  fill: #CCC;
+  display: block;
+  height: 1.5em;
+  padding: 0 0.5em;
+  font-weight: normal;
+}
+
+#navigation a.icon {
+  padding: 0;
+}
+
+#navigation a:hover,
+#navigation a:focus {
+  color: #FFF;
+  fill: #FFF;
+}
+
+#navigation svg {
+  box-sizing: border-box;
+  height: 100%;
+  width: auto;
+  padding: 5px;
 }
 
 #content {
@@ -204,6 +279,15 @@ body.home #header .title.active {
   padding: 2.5em 1em;
 }
 
+body.home #main blockquote {
+  font-size: 1.25em;
+  line-height: 1.5em;
+  margin: 2em 0 0;
+  border-left: solid 5px rgba(0,0,0,0.1);
+  padding-left: 1em;
+  font-style: italic;
+}
+
 #extraneous {
   padding: 2.5em 0;
   background: #222;
@@ -232,7 +316,31 @@ body.home #header .title.active {
   border-color: rgba(238, 238, 238, 0.25);
 }
 
+#extraneous a:focus {
+  outline: solid 2px #EEE;
+}
+
 .constrained {
   margin: 0 auto;
   max-width: 35em;
 }
+
+a, a:visited {
+  color: inherit;
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-position: under;
+}
+
+a:focus {
+  outline: solid 2px #222;
+  outline-offset: 2px;
+  text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  a:focus {
+    outline-color: #EEE;
+  }
+}
+
