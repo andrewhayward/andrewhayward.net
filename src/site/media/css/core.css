@@ -223,6 +223,8 @@ body.home #header .title.active {
   height: 1.5em;
   padding: 0 0.5em;
   font-weight: normal;
+  position: relative;
+  overflow: hidden;
 }
 
 #navigation a.icon {
@@ -233,6 +235,16 @@ body.home #header .title.active {
 #navigation a:focus {
   color: #FFF;
   fill: #FFF;
+}
+
+#navigation i {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
 }
 
 #navigation svg {
