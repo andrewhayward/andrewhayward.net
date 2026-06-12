@@ -108,7 +108,7 @@ button:focus-visible {
     z-index: 999;
     background-color: var(--background);
 
-    &[href]:focus-visible {
+    &[href]:focus {
         position: fixed;
         top: 4.125rem;
         left: 50%;
@@ -123,7 +123,7 @@ button:focus-visible {
     }
 }
 
-body:has(.skip-link[href]:focus-visible)::before {
+body:has(.skip-link[href]:focus)::before {
     content: "";
     position: fixed;
     top: 0;
