@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { fileURLToPath } from 'url';
 
-import { InputPathToUrlTransformPlugin } from '@11ty/eleventy';
+import { IdAttributePlugin, InputPathToUrlTransformPlugin } from '@11ty/eleventy';
 import Image, { eleventyImageTransformPlugin } from "@11ty/eleventy-img";
 
 import readingTime from 'eleventy-plugin-reading-time';
@@ -19,6 +19,7 @@ export default function (config) {
         config.addCollection(collection, callback);
     })
 
+    config.addPlugin(IdAttributePlugin);
     config.addPlugin(InputPathToUrlTransformPlugin);
     // config.addPlugin(eleventyImageTransformPlugin);
     config.addPlugin(readingTime);

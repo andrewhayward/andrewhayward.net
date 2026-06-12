@@ -100,6 +100,14 @@ button:focus-visible {
     outline-offset: 0.5rem;
 }
 
+blockquote {
+    border-left: solid 0.5rem var(--foreground-accent);
+    margin: 0;
+    padding: 0rem;
+    padding-inline-start: 1.5rem;
+    font-style: italic;
+}
+
 .skip-link {
     display: block;
     position: absolute;
@@ -120,6 +128,37 @@ button:focus-visible {
         border: solid 1px var(--foreground);
         box-shadow: var(--shadow);
         box-sizing: border-box;
+    }
+}
+
+:target {
+    scroll-margin-block: 7.5rem;
+    position: relative;
+
+    &::before {
+        content: "↦";
+        position: absolute;
+        right: calc(100% + 0.5rem);
+        top: 0;
+        padding-top: inherit;
+        line-height: inherit;
+        color: var(--foreground-accent);
+    }
+
+    &:focus {
+        outline: none;
+
+        &::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            outline: double 0.25rem var(--foreground-accent);
+            outline-offset: -0.5rem;
+        }
     }
 }
 
@@ -587,7 +626,7 @@ body:has(.skip-link[href]:focus)::before {
 
         a:focus-visible {
             outline: none;
-            scroll-margin: 7.5rem 0;
+            scroll-margin-block: 7.5rem;
 
             &::after {
                 outline: dashed 0.2rem var(--foreground-accent);
