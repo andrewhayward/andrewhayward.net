@@ -1,0 +1,31 @@
+{
+    "name": "andrewhayward.net",
+    "version": "1.0.0",
+    "description": "My website",
+    "license": "ISC",
+    "author": "Andrew Hayward",
+    "type": "module",
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "start": "npx @11ty/eleventy --serve",
+        "watch": "npx @11ty/eleventy --watch",
+        "build": "npx @11ty/eleventy",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@11ty/eleventy": "^3.1.5",
+        "@11ty/eleventy-img": "^6.0.4",
+        "@fontsource/ibm-plex-sans-condensed": "^5.2.8",
+        "calculate-string-similarity": "^1.0.9",
+        "eleventy-plugin-reading-time": "^0.0.1",
+        "install": "^0.13.0",
+        "npm": "^11.17.0",
+        "retext": "^9.0.0",
+        "retext-keywords": "^8.0.2",
+        "retext-pos": "^5.0.0",
+        "strftime": "^0.10.3",
+        "vfile": "^6.0.3"
+    }
+}

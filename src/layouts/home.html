@@ -1,0 +1,32 @@
+---
+layout: base.html
+posttitle: true
+eleventyImport:
+  collections: ["featured", "latest"]
+---
+{% import "./macros/grid.njk" as grid %}
+{% import "./macros/hero.njk" as heroPanel %}
+
+{% call heroPanel.render(title, lede) %}
+    <div class="portrait"><img src="/assets/images/portrait.jpg" alt=""></div>
+{% endcall %}
+
+<div class="constrained narrow">
+    {{ content | safe }}
+</div>
+
+{% if collections.home.length > 0 %}
+    <section class="constrained narrow">
+        <h2>Recently...</h2>
+        {{ grid.render(collections.home, true) }}
+    </section>
+{% endif %}
+
+{#
+{% if collections.anthologies.length > 0 %}
+    <section class="constrained narrow">
+        <h2>Anthologies</h2>
+        {{ grid.render(collections.anthologies) }}
+    </section>
+{% endif %}
+#}

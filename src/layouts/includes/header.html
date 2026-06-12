@@ -1,0 +1,65 @@
+<header id="main-header">
+    <div class="constrained wide">
+        <div class="wrapper">
+            <p><a href="index.md">Andrew Hayward</a></p>
+            <nav aria-label="Main navigation">
+                <ul>
+                    <li><a href="index.md">Home</a></li>
+                    <li><a href="content/posts/index.md">Ruminations</a></li>
+                    <li><a href="about.md">About</a></li>
+                    <li>
+                        <div id="theme-picker">
+                            <select id="theme-picker" name="theme" aria-label="Theme">
+                                <option value="">System</option>
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                            </select>
+                            <div class="options" aria-hidden="true">
+                                <span class="option system selected">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                                        <path d="m10 16.584v2.4156c0 1.1046.8954 2 2 2s2-.8954 2-2v-2.4156m3-4.584c0 2.7614-2.2386 5-5 5s-5-2.2386-5-5 2.2386-5 5-5 5 2.2386 5 5z"/>
+                                        <path class="illuminated" d="m 12 3 v 1 m 6.3643 1.6357 l -0.7071 0.7072 m -12.0215 -0.7072 l 0.7072 0.7072 m -2.3429 5.6571 h -1 m 18 0 h -1 z"/>
+                                    </svg>
+                                </span>
+                                <span class="option light">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m12 3v1m0 16v1m-8-9h-1m3.31412-5.68588-.81412-.81412m12.1859.81412.8141-.81412m-12.18588 12.19-.81412.8101m12.1859-.8101.8141.8101m2.5-6.5001h-1m-4 0c0 2.2091-1.7909 4-4 4-2.20914 0-4-1.7909-4-4 0-2.20914 1.79086-4 4-4 2.2091 0 4 1.79086 4 4z"/></svg>
+                                </span>
+                                <span class="option dark">
+                                    <svg fill="none" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"><path d="m3.32031 11.6835c0 4.9706 4.02944 9 8.99999 9 3.7872 0 7.028-2.3392 8.3565-5.6515-1.0366.4166-2.1709.6514-3.3565.6514-4.9706 0-8.99999-4.0294-8.99999-8.99998 0-1.18004.23134-2.32083.64422-3.35346-3.30848 1.33032-5.64422 4.56916-5.64422 8.35354z"/></svg>
+                                </span>
+                            </div>
+                        </div>
+                        <script>
+                            ((id) => {
+                                const picker = document.getElementById(id);
+                                const select = picker.querySelector('select');
+                                const {theme} = getSettingsState();
+                                for (let option of select.options) {
+                                    if (option.value === theme) {
+                                        option.selected = true;
+                                    }
+                                }
+                                let shouldRespondToEnter = false;
+                                select.addEventListener('focus', (e) => {
+                                    setTimeout(() => {
+                                        shouldRespondToEnter = e.srcElement === select;
+                                    }, 500);
+                                }, true);
+                                select.addEventListener('keyup', (e) => {
+                                    if (e.key === 'Enter' && shouldRespondToEnter) {
+                                        const {length, selectedIndex} = select;
+                                        select.selectedIndex = (selectedIndex + 1) % length;
+                                        setSettingsState({[select.name]: select.value || undefined});
+                                    }
+                                }, true);
+                                select.addEventListener('input', (e) => {
+                                    setSettingsState({[select.name]: select.value || undefined});
+                                });
+                            })('theme-picker');
+                        </script>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</header>

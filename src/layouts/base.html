@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="{{ meta.lang }}" data-content-type="{{ layout | replace(r/\.[^.]*$/, "") }}">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
+        <script>
+            const STATE_KEY = 'settings-state';
+            function getSettingsState() {
+                try {
+                    return JSON.parse(localStorage.getItem(STATE_KEY)) ?? {};
+                } catch {
+                    return {};
+                }
+            }
+            function setSettingsState(data) {
+                localStorage.setItem(STATE_KEY, JSON.stringify(data));
+                const html = document.querySelector('html');
+                Object.entries(data).forEach(([key, value]) => {
+                    const attribute = `data-settings-${key}`;
+                    if (value) {
+                        html.setAttribute(attribute, value);
+                    } else {
+                        html.removeAttribute(attribute)
+                    }
+                });
+            }
+            setSettingsState(getSettingsState());
+        </script>
+        <link rel="stylesheet" href="/assets/fonts.css">
+        <link rel="stylesheet" href="/assets/style.css">
+    </head>
+    <body>
+        <a href="#main-content" class="skip-link">Skip to main content</a>
+        
+        {% include "header.html" %}
+        <main id="main-content" tabindex="-1">
+            {{ content | safe }}
+        </main>
+        {% include "footer.html" %}
+    </body>
+</html>

@@ -1,0 +1,11 @@
+{% import "./card.njk" as card %}
+
+{% macro render(items, withFeatured) %}
+    <ol class="grid{% if withFeatured %} with-featured{% endif %}">
+        {%- for item in items -%}
+            <li class="grid-item">
+                {{ card.render(item) }}
+            </li>
+        {%- endfor -%}
+    </ol>
+{% endmacro %}

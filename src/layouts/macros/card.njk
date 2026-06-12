@@ -1,0 +1,18 @@
+{% macro render(post) %}
+    <article class="card
+        {%- if post.data.tags.includes('anthologies') %} card-anthology{% endif -%}
+        {%- if post.data.tags.includes('posts') %} card-post{% endif -%}
+    " aria-label="{{ post.data.title | markdown | striptags }}">
+        <h3 class="card-title"><a href="{{ post.page.url }}">{{ post.data.title | markdown | striptags }}</a></h3>
+        {% if post.data.lede %}<div class="card-lede">{{ post.data.lede | markdown | safe }}</div>{% endif %}
+        <div class="card-meta">
+            {% if post.data.tags.includes('anthologies') %}
+                {{ post.data.pagination.items.length }} {{ 'article' | pluralize(post.data.pagination.items.length) }}
+            {% else %}
+                <time datetime="{{ post.date | strftime('%Y-%m-%d') }}">{{ post.date | strftime('%e %b %Y') }}</time>
+                <span>•</span>
+                <span>{{ post.content | readingTime }} read</span>
+            {% endif %}
+        </div>
+    </article>
+{% endmacro %}
