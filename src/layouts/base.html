@@ -4,14 +4,16 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
+        {% if lede %}<meta name="description" content="{{ lede | markdown | striptags }}" />{% endif %}
         <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="4435fae5-ec9b-4979-9899-f54eed2057e2"></script> -->
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:site_name" content="{{ meta.title }}" />
         <meta property="og:title" content="{{ title | markdown | striptags }}" />
-        {% if lede %}<meta property="og:description" content="{{ lede | markdown | striptags }}" />{% endif %}
+        {% if lede %}<meta property="og:description" content="{{ lede | markdown | striptags | truncate(125) }}" />{% endif %}
         <meta property="og:image" content="/assets/images/og/{{ urlSlug | default(page.fileSlug, true) | default('home', true) }}.png" />
         <meta property="og:image:alt" content="{{ title | markdown | striptags }}{% if lede %} {{ lede | markdown | striptags }}{% endif %}" />
+        <meta name="twitter:card" content="summary_large_image">
         <script>
             const STATE_KEY = 'settings-state';
             function getSettingsState() {
