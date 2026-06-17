@@ -7,7 +7,7 @@ eleventyImport:
 {% import "./macros/grid.njk" as grid %}
 {% import "./macros/hero.njk" as heroPanel %}
 
-{% call heroPanel.render(title, lede) %}
+{% call heroPanel.render(title, lede + ' <a href="about.md" aria-label="More about me">⇢</a>') %}
     <div class="portrait"><img src="/assets/images/portrait.jpg" alt=""></div>
 {% endcall %}
 
