@@ -4,6 +4,7 @@ import { platform } from 'node:os'
 
 import { fileURLToPath } from 'url';
 import { toSfnt } from 'woff-tools';
+import qrcode from 'qrcode';
 
 let fontsConf;
 let fontsDir;
@@ -171,10 +172,19 @@ export default async function (config) {
     config.addAsyncFilter('dataURI', async (filepath, mimeType) => {
         const key = `${filepath}::${mimeType}`;
         if (!dataURIcache.has(key)) {
-            dataURIcache.set(key, await readFile(path.join('./src/site', filepath), 'base64'));
+            const encoded = await readFile(path.join('./src/site', filepath), 'base64');
+            dataURIcache.set(key, `data:${mimeType};base64,${encoded}`);
         }
-        return `data:${mimeType};base64,${dataURIcache.get(key)}`;
+        return dataURIcache.get(key);;
     });
+    config.addAsyncFilter('qrcode', async (data) => {
+        const key = `@QRCODE:${data}`;
+        if (!dataURIcache.has(key)) {
+            dataURIcache.set(key, await qrcode.toDataURL(data, { errorCorrectionLevel: 'L' }));
+        }
+        return dataURIcache.get(key);
+    });
+
 
     const fonts = path.relative(
         path.dirname(fileURLToPath(import.meta.url)),

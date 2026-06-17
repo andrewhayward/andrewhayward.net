@@ -29,7 +29,8 @@ eleventyExcludeFromCollections: true
         }
         .title {
             font-size: 90px;
-            filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.2));
+            filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.2));
+            font-weight: 500;
         }
         .lede {
             font-size: 40px;
@@ -72,13 +73,15 @@ eleventyExcludeFromCollections: true
     </g>
 
     <g>
+        {%- set fullUrl = meta.url + preview.page.url %}
         <image x="75" y="503" width="50" height="50" href="{{ "./assets/images/portrait.jpg" | dataURI("image/jpeg") }}" clip-path="url(#circle)" />
         <circle cx="100" cy="528" r="25" stroke="#000" fill="none" stroke-width="2" />
         <text x="150" y="523" class="author">
             {{- meta.author -}}
         </text>
         <text x="150" y="548" class="url">
-            {{- meta.url }}{{ preview.page.url -}}
+            {{- fullUrl -}}
         </text>
+        <image x="1060" y="490" width="75" height="75" href="{{ fullUrl | qrcode }}" />
     </g>
 </svg>
