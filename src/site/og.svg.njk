@@ -28,16 +28,22 @@ eleventyExcludeFromCollections: true
             font-weight: 400;
         }
         .title {
-            font-size: 6em;
+            font-size: 90px;
         }
         .lede {
-            font-size: 2.5em;
+            font-size: 40px;
         }
         .em {
             fill: #B94E36;
         }
         .strong {
             font-weight: 700;
+        }
+        .author {
+            font-size: 25px;
+        }
+        .url {
+            font-size: 15px;
         }
     </style>
 
@@ -64,13 +70,13 @@ eleventyExcludeFromCollections: true
         {%- endif %}
     </g>
 
-    <g fill="none">
+    <g>
         <image x="75" y="503" width="50" height="50" href="{{ "./assets/images/portrait.jpg" | dataURI("image/jpeg") }}" clip-path="url(#circle)" />
-        <circle cx="100" cy="528" r="25" stroke="#000" stroke-width="2" />
-        <text x="150" y="523" font-family="IBM Plex Sans Condensed" font-size="1.5em" fill="#000">
+        <circle cx="100" cy="528" r="25" stroke="#000" fill="none" stroke-width="2" />
+        <text x="150" y="523" class="author">
             {{- meta.author -}}
         </text>
-        <text x="150" y="548" font-family="IBM Plex Sans Condensed" font-size="1em" fill="#000">
+        <text x="150" y="548" class="url">
             {{- meta.url }}{{ preview.page.url -}}
         </text>
     </g>
