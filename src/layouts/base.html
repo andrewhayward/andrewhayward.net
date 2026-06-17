@@ -3,11 +3,13 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="canonical" content="{{ meta.url }}{{ page.url }}" />
         <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
         {% if lede %}<meta name="description" content="{{ lede | markdown | striptags }}" />{% endif %}
         <!-- <script defer src="https://cloud.umami.is/script.js" data-website-id="4435fae5-ec9b-4979-9899-f54eed2057e2"></script> -->
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
+        <meta property="og:url" content="{{ meta.url }}{{ page.url }}" />
         <meta property="og:site_name" content="{{ meta.title }}" />
         <meta property="og:title" content="{{ title | markdown | striptags }}" />
         {% if lede %}<meta property="og:description" content="{{ lede | markdown | striptags | truncate(125) }}" />{% endif %}
