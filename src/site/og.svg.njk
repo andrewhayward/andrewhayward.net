@@ -7,7 +7,7 @@ permalink: "/assets/images/og/{{ preview.data.urlSlug | default(preview.data.pag
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="1200" height="628" viewBox="0 0 1200 628" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="1200" height="630" viewBox="0 0 1200 630" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <defs>
         <clipPath id="circle" clipPathUnits="objectBoundingBox">
             <circle cx=".5" cy=".5" r=".5" />
@@ -52,7 +52,7 @@ eleventyExcludeFromCollections: true
     <g fill="none">
         <image x="0" y="0" width="1200" height="1200" href="{{ "./assets/images/wallpaper.jpg" | dataURI("image/jpeg") }}" filter="url(#tile)" />
         <rect x="0" y="0" width="100%" height="100%" fill="url(#overlay)" />
-        <rect x="25" y="25" width="1150" height="578" stroke="#B94E36" stroke-width="10" />
+        <rect x="25" y="25" width="1150" height="580" stroke="#B94E36" stroke-width="10" />
     </g>
 
     <g>
@@ -74,12 +74,12 @@ eleventyExcludeFromCollections: true
 
     <g>
         {%- set fullUrl = meta.url + preview.page.url %}
-        <image x="75" y="503" width="50" height="50" href="{{ "./assets/images/portrait.jpg" | dataURI("image/jpeg") }}" clip-path="url(#circle)" />
-        <circle cx="100" cy="528" r="25" stroke="#000" fill="none" stroke-width="2" />
-        <text x="150" y="523" class="author">
+        <image x="75" y="505" width="50" height="50" href="{{ "./assets/images/portrait.jpg" | dataURI("image/jpeg") }}" clip-path="url(#circle)" />
+        <circle cx="100" cy="530" r="25" stroke="#000" fill="none" stroke-width="2" />
+        <text x="150" y="525" class="author">
             {{- meta.author -}}
         </text>
-        <text x="150" y="548" class="url">
+        <text x="150" y="550" class="url">
             {{- fullUrl -}}
         </text>
         <image x="1060" y="490" width="75" height="75" href="{{ fullUrl | qrcode }}" />
