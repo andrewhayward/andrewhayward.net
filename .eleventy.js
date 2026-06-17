@@ -5,9 +5,12 @@ import { platform } from 'node:os'
 import { fileURLToPath } from 'url';
 import { toSfnt } from 'woff-tools';
 
+let fontsConf;
+let fontsDir;
+
 if (platform() !== 'darwin') {
-    const fontsConf = fileURLToPath(import.meta.resolve("./fonts/fonts.conf"));
-    const fontsDir = path.dirname(fontsConf);
+    fontsConf = fileURLToPath(import.meta.resolve("./fonts/fonts.conf"));
+    fontsDir = path.dirname(fontsConf);
     process.env.FONTCONFIG_FILE = fontsConf;
     process.env.FONTCONFIG_PATH = fontsDir;
     process.env.PANGOCAIRO_BACKEND = "fontconfig";
