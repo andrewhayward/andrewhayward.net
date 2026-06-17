@@ -200,12 +200,15 @@ export default async function (config) {
         console.group('Post processing:');
         for await (const inputPath of glob(`${inputDir}/*.svg`)) {
             try {
-                const {png: results} = await Image(inputPath, {
-                    formats: ["png"],
+                const {webp: results} = await Image(inputPath, {
+                    formats: ["webp"],
                     outputDir: inputDir,
                     filenameFormat: (id, src, width, format, options) => (
                         inputPath.replace(/^.*\/([^.]+)\.[^.]+$/, `$1.${format}`)
-                    )
+                    ),
+                    sharpWebpOptions: {
+                        quality: 80,
+                    },
                 });
                 const [{outputPath}] = results;
                 console.log(`${inputPath}\n✅ ${outputPath}`);
