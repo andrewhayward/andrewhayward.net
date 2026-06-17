@@ -3,7 +3,7 @@ pagination:
   data: collections.all
   size: 1
   alias: preview
-permalink: "/assets/images/og/{{ preview.data.urlSlug | default(preview.data.page.fileSlug) }}.svg"
+permalink: "/assets/images/og/{{ preview.data.urlSlug | default(preview.data.page.fileSlug, true) | default('home', true) }}.svg"
 eleventyExcludeFromCollections: true
 ---
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
