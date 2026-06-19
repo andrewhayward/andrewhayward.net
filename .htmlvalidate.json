@@ -1,0 +1,7 @@
+{
+    "extends": [
+        "html-validate:a11y",
+        "html-validate:document",
+        "html-validate:standard"
+    ]
+}
