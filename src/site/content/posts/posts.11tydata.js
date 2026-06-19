@@ -13,14 +13,17 @@ function createHash(title, date, len = 8) {
             .slice(0, len);
 }
 
-function urlSlug({page: {date: timestamp, fileSlug}}) {
+function urlHash(fileSlug, timestamp, len = 8) {
     const date = new Date(Date.UTC(
         timestamp.getFullYear(),
         timestamp.getMonth(),
         timestamp.getDate()
     ));
-    const hash = createHash(fileSlug, date);
-    return `${ fileSlug }-${ hash }`;
+    return createHash(fileSlug, date);
+}
+
+function urlSlug({page: {date, fileSlug}}) {
+    return `${ fileSlug }-${ urlHash(fileSlug, date) }`;
 }
 
 function extractWords(keywords, threshold = 0.2) {
@@ -38,13 +41,11 @@ export default {
     permalink: (meta) => `writing/${ urlSlug(meta) }/index.html`,
     tags: ['posts'],
     eleventyComputed: {
-        atproto: ({atpId, meta}) => {
-            if (atpId) {
-                return {
-                    type: 'site.standard.document',
-                    uri: `at://${ meta.atproto.did}/site.standard.document/${ atpId }`,
-                }
-            }
+        atproto: ({atpId, meta, page}) => {
+            const type = 'site.standard.document';
+            const key = atpId ?? urlHash(page.fileSlug, page.date);
+            const uri = `at://${ meta.atproto.did}/site.standard.document/${ key }`
+            return { type, uri };
         },
         urlSlug,
         color: ({title, date}) => createHash(title, date, 6),
