@@ -1,9 +1,9 @@
-{% macro render(title, lede) %}
+{%- macro render(title, lede) -%}
     <div id="hero">
         <div class="constrained wide">
-            {% if title %}<h1>{{ title | markdown(true) | safe }}</h1>{% endif %}
-            {% if lede %}<div class="lede narrow">{{ lede | markdown | safe }}</div>{% endif %}
+            {%- if title %}<h1>{{ title | markdown(true) | safe }}</h1>{% endif -%}
+            {%- if lede %}<div class="lede narrow">{{ lede | markdown | safe }}</div>{% endif -%}
             {{ caller() }}
         </div>
     </div>
-{% endmacro %}
+{%- endmacro -%}
