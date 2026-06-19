@@ -5,6 +5,28 @@ import retextKeywords from 'retext-keywords';
 import retextPos from 'retext-pos';
 import {VFile} from 'vfile';
 
+const S32_CHAR = '234567abcdefghijklmnopqrstuvwxyz'
+
+function s32encode(num) {
+    let s = '';
+    while (num) {
+        const c = num % 32;
+        num = Math.floor(num / 32);
+        s = S32_CHAR.charAt(c) + s;
+    }
+    return s
+}
+
+function createTID(str, date) {
+    const timestamp = Date.UTC(
+        date.getFullYear(),
+        date.getMonth(),
+        date.getDate()
+    ) * 1000;
+    const clockid = crypto.createHash('md5').update(str).digest().readUInt8() % 32;
+    return `${s32encode(timestamp)}${s32encode(clockid).padStart(2, '2')}`;
+}
+
 function createHash(title, date, len = 8) {
     return crypto.createHash('md5')
             .update(title)
@@ -41,10 +63,9 @@ export default {
     permalink: (meta) => `writing/${ urlSlug(meta) }/index.html`,
     tags: ['posts'],
     eleventyComputed: {
-        atproto: ({atpTID, meta, page}) => {
+        atproto: ({tid, meta, page}) => {
             const type = 'site.standard.document';
-            const tid = atpTID ?? urlHash(page.fileSlug, page.date, 13);
-            const uri = `at://${ meta.atproto.did}/site.standard.document/${ tid }`
+            const uri = `at://${ meta.atproto.did}/site.standard.document/${ tid ?? createTID(page.fileSlug, page.date) }`
             return { type, uri };
         },
         urlSlug,
