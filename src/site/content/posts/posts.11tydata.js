@@ -19,7 +19,7 @@ function urlHash(fileSlug, timestamp, len = 8) {
         timestamp.getMonth(),
         timestamp.getDate()
     ));
-    return createHash(fileSlug, date);
+    return createHash(fileSlug, date, len);
 }
 
 function urlSlug({page: {date, fileSlug}}) {
@@ -41,10 +41,10 @@ export default {
     permalink: (meta) => `writing/${ urlSlug(meta) }/index.html`,
     tags: ['posts'],
     eleventyComputed: {
-        atproto: ({atpId, meta, page}) => {
+        atproto: ({atpTID, meta, page}) => {
             const type = 'site.standard.document';
-            const key = atpId ?? urlHash(page.fileSlug, page.date);
-            const uri = `at://${ meta.atproto.did}/site.standard.document/${ key }`
+            const tid = atpTID ?? urlHash(page.fileSlug, page.date, 13);
+            const uri = `at://${ meta.atproto.did}/site.standard.document/${ tid }`
             return { type, uri };
         },
         urlSlug,
