@@ -191,6 +191,7 @@ export default async function (config) {
         fileURLToPath(import.meta.resolve("@fontsource/ibm-plex-sans-condensed/files/ibm-plex-sans-condensed-latin-*.woff*")),
     );
 
+    config.addPassthroughCopy('src/site/.well-known');
     config.addPassthroughCopy('src/site/assets');
     config.addPassthroughCopy({[fonts]: 'assets/fonts'});
     config.addWatchTarget('src/site/assets/*.css');
