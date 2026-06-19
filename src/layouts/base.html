@@ -9,22 +9,22 @@
         <link rel="me" href="https://linkedin.com/in/arhayward" />
         <link rel="webmention" href="https://webmention.io/andrewhayward.net/webmention" />
         <link rel="site.standard.publication" href="at://{{ meta.atproto.did }}/site.standard.publication/{{ meta.atproto.publicationId }}" />
-        {% if atproto -%}
+        {%- if atproto -%}
             <link rel="{{ atproto.type | default('site.standard.document') }}" href="{{ atproto.uri }}" />
-        {%- endif %}
+        {%- endif -%}
         <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
         {% if lede %}<meta name="description" content="{{ lede | markdown | striptags }}" />{% endif %}
-        {% if eleventy.env.runMode === "build" -%}
+        {%- if eleventy.env.runMode === "build" -%}
             <script defer src="https://cloud.umami.is/script.js" data-website-id="4435fae5-ec9b-4979-9899-f54eed2057e2"></script>
-        {%- endif %}
+        {%- endif -%}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:url" content="{{ meta.url }}{{ page.url }}" />
         <meta property="og:site_name" content="{{ meta.title }}" />
         <meta property="og:title" content="{{ title | markdown | striptags }}" />
-        {% if lede -%}
+        {%- if lede -%}
             <meta property="og:description" content="{{ lede | markdown | striptags | truncate(125) }}" />
-        {%- endif %}
+        {%- endif -%}
         <meta property="og:image" content="/assets/images/og/{{ urlSlug | default(page.fileSlug, true) | default('home', true) }}.webp" />
         <meta property="og:image:alt" content="{{ title | markdown | striptags }}{% if lede %} {{ lede | markdown | striptags }}{% endif %}" />
         <meta property="og:image:width" content="1200" />
@@ -58,7 +58,6 @@
     </head>
     <body>
         <a href="#main-content" class="skip-link">Skip to main content</a>
-        
         {% include "header.html" %}
         <main id="main-content" tabindex="-1">
             {{ content | safe }}
