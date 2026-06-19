@@ -10,13 +10,17 @@
         <link rel="webmention" href="https://webmention.io/andrewhayward.net/webmention" />
         <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
         {% if lede %}<meta name="description" content="{{ lede | markdown | striptags }}" />{% endif %}
-        <script defer src="https://cloud.umami.is/script.js" data-website-id="4435fae5-ec9b-4979-9899-f54eed2057e2"></script>
+        {% if eleventy.env.runMode === "build" -%}
+            <script defer src="https://cloud.umami.is/script.js" data-website-id="4435fae5-ec9b-4979-9899-f54eed2057e2"></script>
+        {%- endif %}
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:url" content="{{ meta.url }}{{ page.url }}" />
         <meta property="og:site_name" content="{{ meta.title }}" />
         <meta property="og:title" content="{{ title | markdown | striptags }}" />
-        {% if lede %}<meta property="og:description" content="{{ lede | markdown | striptags | truncate(125) }}" />{% endif %}
+        {% if lede -%}
+            <meta property="og:description" content="{{ lede | markdown | striptags | truncate(125) }}" />
+        {%- endif %}
         <meta property="og:image" content="/assets/images/og/{{ urlSlug | default(page.fileSlug, true) | default('home', true) }}.webp" />
         <meta property="og:image:alt" content="{{ title | markdown | striptags }}{% if lede %} {{ lede | markdown | striptags }}{% endif %}" />
         <meta property="og:image:width" content="1200" />
