@@ -4,23 +4,23 @@ posttitle: true
 eleventyImport:
   collections: ["featured", "latest"]
 ---
-{% import "./macros/grid.njk" as grid %}
-{% import "./macros/hero.njk" as heroPanel %}
+{%- import "./macros/grid.njk" as grid -%}
+{%- import "./macros/hero.njk" as heroPanel -%}
 
-{% call heroPanel.render(title, lede + ' <a href="about.md" aria-label="More about me">⇢</a>') %}
+{%- call heroPanel.render(title, lede + ' <a href="about.md" aria-label="More about me">⇢</a>') -%}
     <div class="portrait"><img src="/assets/images/portrait.jpg" alt=""></div>
-{% endcall %}
+{%- endcall -%}
 
 <div class="constrained narrow">
     {{ content | safe }}
 </div>
 
-{% if collections.home.length > 0 %}
+{%- if collections.home.length > 0 -%}
     <section class="constrained narrow">
         <h2>Recently...</h2>
         {{ grid.render(collections.home, true) }}
     </section>
-{% endif %}
+{%- endif -%}
 
 {#
 {% if collections.anthologies.length > 0 %}

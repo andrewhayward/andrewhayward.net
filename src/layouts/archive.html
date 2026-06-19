@@ -1,17 +1,17 @@
 ---
 layout: base.html
 ---
-{% import "./macros/grid.njk" as grid %}
-{% import "./macros/hero.njk" as heroPanel %}
+{%- import "./macros/grid.njk" as grid -%}
+{%- import "./macros/hero.njk" as heroPanel -%}
 
-{% call heroPanel.render(title, lede) %}{% endcall %}
+{%- call heroPanel.render(title, lede) %}{% endcall -%}
 
 <div class="constrained narrow">
     {{ content | safe }}
 </div>
 
-{% if pagination.items.length %}
+{%- if pagination.items.length -%}
     <div class="constrained narrow">
         {{ grid.render(pagination.items) }}
     </div>
-{% endif %}
+{%- endif -%}

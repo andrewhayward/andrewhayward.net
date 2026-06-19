@@ -1,27 +1,27 @@
 ---
 layout: base.html
 ---
-{% import "./macros/grid.njk" as grid %}
-{% import "./macros/hero.njk" as heroPanel %}
+{%- import "./macros/grid.njk" as grid -%}
+{%- import "./macros/hero.njk" as heroPanel -%}
 
-{% call heroPanel.render(title, lede) %}
+{%- call heroPanel.render(title, lede) -%}
     <p class="meta" data-author="{{ author }}">
         <time datetime="{{ date.toISOString() }}">{{ date | strftime('%e %b %Y') }}</time>
         <span>•</span>
         <span>{{ content | readingTime }} read</span></p>
     </p>
-{% endcall %}
+{%- endcall -%}
 
 <div id="content" class="constrained narrow">
     {{ content | safe }}
 </div>
 
-{% set relatedPosts = related(collections.all) %}
-{% if relatedPosts.length %}
+{%- set relatedPosts = related(collections.all) -%}
+{%- if relatedPosts.length -%}
     <aside id="aside">
         <div class="constrained wide">
             <h2>Related content</h2>
             {{ grid.render(relatedPosts) }}
         </div>
     </aside>
-{% endif %}
+{%- endif -%}

@@ -1,9 +1,9 @@
 ---
 layout: base.html
 ---
-{% import "./macros/hero.njk" as heroPanel %}
+{%- import "./macros/hero.njk" as heroPanel -%}
 
-{% call heroPanel.render(title, lede) %}{% endcall %}
+{%- call heroPanel.render(title, lede) %}{% endcall -%}
 
 <div class="constrained narrow">
     {{ content | safe }}
