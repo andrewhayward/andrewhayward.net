@@ -2,6 +2,7 @@
 title: "Moving Beyond the Checklist"
 lede: Treating accessibility as a compliance checklist creates an illusion of inclusion, resulting in products that pass legal standards but fail in the real world.
 date: 2026-06-19
+atpId: 3monh5hnbpv2p
 ---
 ## Why Compliance-First Accessibility is Destined to Fail
 

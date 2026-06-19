@@ -38,6 +38,14 @@ export default {
     permalink: (meta) => `writing/${ urlSlug(meta) }/index.html`,
     tags: ['posts'],
     eleventyComputed: {
+        atproto: ({atpId, meta}) => {
+            if (atpId) {
+                return {
+                    type: 'site.standard.document',
+                    uri: `at://${ meta.atproto.did}/site.standard.document/${ atpId }`,
+                }
+            }
+        },
         urlSlug,
         color: ({title, date}) => createHash(title, date, 6),
         retext: async ({page: {inputPath: path, rawInput: value}}) => {

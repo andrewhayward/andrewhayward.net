@@ -1,6 +1,10 @@
 {
     "title": "Andrew Hayward",
     "url": "https://andrewhayward.net",
+    "atproto": {
+        "did": "did:plc:oenpzz7pe4aiyi35zq2wjqsc",
+        "publicationId": "3monfowruzo2k"
+    },
     "lang": "en-gb",
     "locale": "en_gb",
     "author": "Andrew Hayward",

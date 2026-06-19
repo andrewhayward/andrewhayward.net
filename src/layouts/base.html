@@ -8,7 +8,10 @@
         <link rel="me" href="https://github.com/andrewhayward" />
         <link rel="me" href="https://linkedin.com/in/arhayward" />
         <link rel="webmention" href="https://webmention.io/andrewhayward.net/webmention" />
-        <link rel="site.standard.publication" href="at://did:plc:oenpzz7pe4aiyi35zq2wjqsc/site.standard.publication/3monfowruzo2k" />
+        <link rel="site.standard.publication" href="at://{{ meta.atproto.did }}/site.standard.publication/{{ meta.atproto.publicationId }}" />
+        {% if atproto -%}
+            <link rel="{{ atproto.type | default('site.standard.document') }}" href="{{ atproto.uri }}" />
+        {%- endif %}
         <title>{% if not posttitle %}{% if title %}{{ title | markdown | striptags }} | {% endif %}{% endif %}{{ meta.title }}{% if posttitle %}{% if title %} – {{ title | markdown | striptags }}{% endif %}{% endif %}</title>
         {% if lede %}<meta name="description" content="{{ lede | markdown | striptags }}" />{% endif %}
         {% if eleventy.env.runMode === "build" -%}
