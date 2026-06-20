@@ -2,7 +2,6 @@
 title: A *Strategic Approach* to Accessibility Metrics
 lede: To have a real, lasting impact, we need to move beyond ticking boxes, and start measuring the health of the entire development lifecycle.
 date: 2026-05-17
-featuredWeight: 0.5
 ---
 
 In the early stages of an accessibility programme, success is often measured by a single, binary question: “Are we compliant?” While compliance is a necessary goal, treating it as the primary metric for success is a trap. It leads to a ‘whack-a-mole’ culture where teams are constantly reacting to audit reports and fixing bugs in production. This is the most expensive and least efficient way to build software.
